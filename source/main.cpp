@@ -1,15 +1,23 @@
 #include <raylib.h>
 
-int main()
+auto main() -> int
 {
-    InitWindow(800, 600, "RaylibTemplate");
+    constexpr int windowWidth = 800;
+    constexpr int windowHeight = 600;
+
+    InitWindow(windowWidth, windowHeight, "RaylibTemplate");
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
-        DrawText("Hello, World!", 10, 10, 20, LIGHTGRAY);
+
+        constexpr int positionX = 10;
+        constexpr int positionY = 10;
+        constexpr int fontSize = 20;
+
+        DrawText("Hello, World!", positionX, positionY, fontSize, DARKGRAY);
 
         EndDrawing();
     }
