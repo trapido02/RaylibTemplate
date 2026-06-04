@@ -7,11 +7,7 @@ Checks: >
   portability-*,
   modernize-*,
   readability-*,
-  misc-*,
-  -modernize-use-nodiscard,
-  -modernize-use-trailing-return-type,
-  -cppcoreguidelines-avoid-magic-numbers,
-  -readability-magic-numbers
+  misc-*
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
 FormatStyle: file
@@ -60,4 +56,4 @@ CheckOptions:
 
   # Disable the warning that prevented the use of a default destructor without defining other special member functions
   - key: cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
-    value: 'true'
+    value: true

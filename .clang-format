@@ -6,6 +6,9 @@ AlignConsecutiveDeclarations: false
 AlignOperands: false
 AlignTrailingComments: false
 AlwaysBreakTemplateDeclarations: Yes
+BreakAfterReturnType: Automatic
+PenaltyReturnTypeOnItsOwnLine: 1000
+AlwaysBreakBeforeMultilineStrings: false
 BraceWrapping:
   AfterCaseLabel: true
   AfterClass: true
@@ -27,6 +30,11 @@ BreakBeforeBraces: Custom
 BreakConstructorInitializers: AfterColon
 BreakConstructorInitializersBeforeComma: false
 ColumnLimit: 120
+BinPackParameters: OnePerLine
+BinPackArguments: false
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowAllArgumentsOnNextLine: true
+PenaltyBreakTemplateDeclaration: 1
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 IncludeCategories:
   - Regex: '^<.*'
@@ -38,7 +46,7 @@ IncludeCategories:
 IncludeIsMainRegex: '([-_](test|unittest))?$'
 IndentCaseBlocks: true
 IndentWidth: 4
-InsertNewlineAtEOF: false
+InsertNewlineAtEOF: true
 MacroBlockBegin: ''
 MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 2
@@ -50,5 +58,8 @@ SpacesInConditionalStatement: false
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 TabWidth: 4
+UseTab: Never
 AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortBlocksOnASingleLine: Empty
 IndentRequiresClause: false
+ReflowComments: Always

@@ -1,13 +1,10 @@
 cmake_minimum_required(VERSION 4.0)
-project(RaylibTemplate
-    VERSION 0.1.0
-    LANGUAGES CXX
-)
+project(RaylibTemplate LANGUAGES C CXX)
 
 # Disallow in-source builds
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "In-source builds are not allowed. Please use a separate build directory.")
-endif()
+endif ()
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -21,9 +18,9 @@ option(RAYLIB_SHARED "Build raylib as shared library" OFF)
 # FetchContent or find_package
 if (NOT RAYLIB_VERSION STREQUAL "LATEST")
     find_package(raylib ${RAYLIB_VERSION} QUIET)
-else()
+else ()
     find_package(raylib QUIET)
-endif()
+endif ()
 
 if (NOT raylib_FOUND)
     include(FetchContent)
@@ -35,28 +32,28 @@ if (NOT raylib_FOUND)
     if (RAYLIB_VERSION STREQUAL "LATEST")
         message(STATUS "Fetching latest raylib from GitHub")
         FetchContent_Declare(
-                raylib
-                GIT_REPOSITORY https://github.com/raysan5/raylib.git
-                GIT_TAG master
-                SOURCE_DIR ${_raylib_source_dir}
-                BINARY_DIR ${_raylib_binary_dir}
+            raylib
+            GIT_REPOSITORY https://github.com/raysan5/raylib.git
+            GIT_TAG master
+            SOURCE_DIR ${_raylib_source_dir}
+            BINARY_DIR ${_raylib_binary_dir}
         )
-    else()
+    else ()
         message(STATUS "Fetching raylib version ${RAYLIB_VERSION}")
         FetchContent_Declare(
-                raylib
-                URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
-                SOURCE_DIR ${_raylib_source_dir}
-                BINARY_DIR ${_raylib_binary_dir}
+            raylib
+            URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
+            SOURCE_DIR ${_raylib_source_dir}
+            BINARY_DIR ${_raylib_binary_dir}
         )
-    endif()
+    endif ()
 
     # Configure raylib build options before building
     set(BUILD_SHARED_LIBS ${RAYLIB_SHARED} CACHE BOOL "Build raylib shared" FORCE)
     set(BUILD_EXAMPLES ${RAYLIB_BUILD_EXAMPLES} CACHE BOOL "Build raylib examples" FORCE)
 
     FetchContent_MakeAvailable(raylib)
-endif()
+endif ()
 
 # Define source files
 file(GLOB_RECURSE PROJECT_SOURCES
@@ -100,4 +97,4 @@ foreach (OUTPUT_CONFIG IN ITEMS Debug Release RelWithDebInfo MinSizeRel)
         LIBRARY_OUTPUT_DIRECTORY_${OUTPUT_CONFIG_UPPER} ${CMAKE_BINARY_DIR}/lib/${OUTPUT_CONFIG}
         ARCHIVE_OUTPUT_DIRECTORY_${OUTPUT_CONFIG_UPPER} ${CMAKE_BINARY_DIR}/lib/${OUTPUT_CONFIG}
     )
-endforeach()
+endforeach ()
