@@ -63,3 +63,4 @@ AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortBlocksOnASingleLine: Empty
 IndentRequiresClause: false
 ReflowComments: Always
+QualifierAlignment: Left
